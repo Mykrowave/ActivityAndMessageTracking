@@ -8,7 +8,7 @@ namespace Activity.common.DomainModels
     {
         public String Id { get; set; }
         public String Tenant { get; set; }
-        public String ActionuserId { get; set; }
+        public String ActionUserId { get; set; }
         public String ActionUser { get; set; }
         public DateTime ActionDate { get; set; }
     }
