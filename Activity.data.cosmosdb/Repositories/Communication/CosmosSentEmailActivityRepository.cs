@@ -71,16 +71,16 @@ namespace Activity.data.cosmosdb.Repositories.Communication
         {
 
             CosmosSQLQuery query = new CosmosSQLQuery();
-            query.Parameters.Add("@startDate", filter.Start.ToUniversalTime().ToString());
-            query.Parameters.Add("@endDate", filter.End.ToUniversalTime().ToString());
+            //query.Parameters.Add("@startDate", filter.Start.ToString());
+            //query.Parameters.Add("@endDate", filter.End.ToString());
             query.Parameters.Add("@activityType", nameof(SentCampaignEmailActivity));
             query.Parameters.Add("@tenant", tenant);
 
             query.Query = $"SELECT * FROM {CollectionName} as t ";
             // Required Fields
-            query.Query += $" WHERE t.{nameof(SentCampaignEmailActivity.ActionDate).ToCamelCase()} >= @startDate ";
-            query.Query += $" AND t.{nameof(SentCampaignEmailActivity.ActionDate).ToCamelCase()} <= @endDate ";
-            query.Query += $" AND t.{nameof(SentCampaignEmailActivity.ActivityType).ToCamelCase()} <= @activityType ";
+            query.Query += $" WHERE t.{nameof(SentCampaignEmailActivity.ActivityType).ToCamelCase()} <= @activityType ";
+            //query.Query += $" AND t.{nameof(SentCampaignEmailActivity.ActionDate).ToCamelCase()} >= @startDate ";
+            //query.Query += $" AND t.{nameof(SentCampaignEmailActivity.ActionDate).ToCamelCase()} <= @endDate ";
             query.Query += $" AND t.{nameof(SentCampaignEmailActivity.Tenant).ToCamelCase()} = @tenant ";
 
             // if UserId is set

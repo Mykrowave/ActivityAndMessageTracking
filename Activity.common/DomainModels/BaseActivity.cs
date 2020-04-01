@@ -9,7 +9,7 @@ namespace Activity.common.DomainModels
         public String Id { get; set; }
         public String Tenant { get; set; }
         public String ActionUserId { get; set; }
-        public String ActionUser { get; set; }
+        public ActionUser ActionUser { get; set; }
         public DateTime ActionDate { get; set; }
         public abstract String ActivityType { get; }
         public String PartitionKey => $"{Tenant}-{ActivityType}";   //TODO: Is there anyway to remove this property from Domain Layer?
