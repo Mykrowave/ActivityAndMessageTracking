@@ -15,36 +15,36 @@ using System.Threading.Tasks;
 
 namespace Activity.data.cosmosdb.Cosmos
 {
-    public abstract class CosmosDbRepository<T> : IActivityRepository<T>, IDocumentCollectionContext<T> where T : BaseActivity
+    public abstract class CosmosActivityRepository<T> : IActivityRepository<T>, IDocumentCollectionContext<T> where T : BaseActivity
     {
         protected readonly ICosmosDbClientFactory _cosmosDbClientFactory;
 
-        protected CosmosDbRepository(ICosmosDbClientFactory cosmosDbClientFactory)
+        protected CosmosActivityRepository(ICosmosDbClientFactory cosmosDbClientFactory)
         {
             _cosmosDbClientFactory = cosmosDbClientFactory;
         }
-        public async Task<T> GetByIdAsync(string id)
-        {
-            try
-            {
-                var cosmosDbClient = _cosmosDbClientFactory.GetClient(CollectionName);
-                var document = await cosmosDbClient.ReadDocumentAsync(id, new RequestOptions
-                {
-                    PartitionKey = ResolvePartitionKey(id)
-                });
+        //public async Task<T> GetByIdAsync(string id)
+        //{
+        //    try
+        //    {
+        //        var cosmosDbClient = _cosmosDbClientFactory.GetClient(CollectionName);
+        //        var document = await cosmosDbClient.ReadDocumentAsync(id, new RequestOptions
+        //        {
+        //            PartitionKey = ResolvePartitionKey(id)
+        //        });
 
-                return JsonConvert.DeserializeObject<T>(document.ToString());
-            }
-            catch (DocumentClientException e)
-            {
-                if (e.StatusCode == HttpStatusCode.NotFound)
-                {
-                    throw new EntityNotFoundException();
-                }
+        //        return JsonConvert.DeserializeObject<T>(document.ToString());
+        //    }
+        //    catch (DocumentClientException e)
+        //    {
+        //        if (e.StatusCode == HttpStatusCode.NotFound)
+        //        {
+        //            throw new EntityNotFoundException();
+        //        }
 
-                throw;
-            }
-        }
+        //        throw;
+        //    }
+        //}
         public async Task<T> AddAsync(T entity)
         {
             try

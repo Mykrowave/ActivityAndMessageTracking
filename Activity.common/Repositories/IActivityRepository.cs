@@ -8,7 +8,7 @@ namespace Activity.common.Repositories
 {
     public interface IActivityRepository<T> where T : BaseActivity
     {
-        Task<T> GetByIdAsync(string id);
+        //Task<T> GetByIdAsync(string id);
         Task<T> AddAsync(T entity);
         Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
         Task UpdateAsync(T entity);

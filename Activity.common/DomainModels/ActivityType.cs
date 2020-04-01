@@ -6,6 +6,6 @@ namespace Activity.common.DomainModels
 {
     public class ActivityType
     {
-
+         
     }
 }

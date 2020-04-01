@@ -10,8 +10,8 @@ namespace Activity.common.cosmosdb.Interfaces
 {
     public interface ICosmosDbClient
     {
-        Task<Document> ReadDocumentAsync(string documentId, RequestOptions options = null,
-            CancellationToken cancellationToken = default(CancellationToken));
+        //Task<Document> ReadDocumentAsync(string documentId, RequestOptions options = null,
+        //    CancellationToken cancellationToken = default(CancellationToken));
 
         Task<Document> CreateDocumentAsync(object document, RequestOptions options = null,
             bool disableAutomaticIdGeneration = false,
