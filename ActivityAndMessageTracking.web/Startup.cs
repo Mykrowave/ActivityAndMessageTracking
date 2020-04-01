@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ActivityAndMessageTracking.Config;
+using ActivityAndMessageTracking.web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,21 @@ namespace ActivityAndMessageTracking.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //cosmos configurations
+            var cosmosConnection = Configuration.GetSection("CosmosConnection")
+                .Get<CosmosConnectionConfig>();
+            var cosmosDb = Configuration.GetSection("CosmosDb")
+                .Get<CosmosDbConfig>();
+
+
+            // Add Cosmos DB
+            services.AddCosmosDb(
+                new Uri(cosmosConnection.Account),
+                cosmosConnection.Key,
+                cosmosDb.DatabaseName,
+                cosmosDb.CollectionNames.Select(cn => cn.Name).ToList());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

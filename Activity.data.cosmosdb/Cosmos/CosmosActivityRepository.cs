@@ -1,7 +1,7 @@
 ﻿using Activity.common.cosmosdb.Interfaces;
 using Activity.common.DomainModels;
 using Activity.common.Exceptions;
-using Activity.common.Repositories.Communication;
+using Activity.common.Repositories;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Newtonsoft.Json;
@@ -61,7 +61,7 @@ namespace Activity.data.cosmosdb.Cosmos
                 var cosmosDbClient = _cosmosDbClientFactory.GetClient(CollectionName);
                 await cosmosDbClient.ReplaceDocumentAsync(entity.Id, entity, new RequestOptions
                 {
-                    PartitionKey = ResolvePartitionKey(entity.Id),
+                    PartitionKey = new PartitionKey(entity.PartitionKey),
                 });
             }
             catch (DocumentClientException e)
@@ -81,7 +81,7 @@ namespace Activity.data.cosmosdb.Cosmos
                 var cosmosDbClient = _cosmosDbClientFactory.GetClient(CollectionName);
                 await cosmosDbClient.DeleteDocumentAsync(entity.Id, new RequestOptions
                 {
-                    PartitionKey = ResolvePartitionKey(entity.Id)
+                    PartitionKey = new PartitionKey(entity.PartitionKey)
                 });
             }
             catch (DocumentClientException e)
@@ -99,7 +99,7 @@ namespace Activity.data.cosmosdb.Cosmos
 
         public abstract string CollectionName { get; }
         public virtual string GenerateId(T entity) => Guid.NewGuid().ToString();
-        public virtual PartitionKey ResolvePartitionKey(string entityId) => null;
+        //public virtual PartitionKey ResolvePartitionKey(string entityId) => null;
 
         
     }

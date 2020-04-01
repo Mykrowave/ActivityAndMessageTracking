@@ -64,7 +64,6 @@ namespace Activity.data.cosmosdb.Cosmos
             {
                 paramCollection.Add(new SqlParameter(p.Key, p.Value));
             }
-
             SqlQuerySpec querySpec = queryParameters == null ?
                 new SqlQuerySpec(query) :
                 new SqlQuerySpec(query, paramCollection);

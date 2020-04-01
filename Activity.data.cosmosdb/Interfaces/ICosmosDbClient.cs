@@ -27,5 +27,7 @@ namespace Activity.common.cosmosdb.Interfaces
             Dictionary<string, string> queryParameters = null, 
             FeedOptions options = null, 
             CancellationToken cancellationToken = default(CancellationToken));
+
+        
     }
 }

@@ -10,6 +10,6 @@ namespace Activity.common.cosmosdb.Interfaces
     {
         string CollectionName { get; }
         string GenerateId(T entity);
-        PartitionKey ResolvePartitionKey(string entityId); 
+        //PartitionKey ResolvePartitionKey(string entityId); 
     }
 }

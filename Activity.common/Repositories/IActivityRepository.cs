@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Activity.common.Repositories.Communication
+namespace Activity.common.Repositories
 {
     public interface IActivityRepository<T> where T : BaseActivity
     {
