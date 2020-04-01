@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Activity.common.Repositories
+namespace Activity.common.Repositories.Communication
 {
     public interface IActivityRepository<T> where T : BaseActivity
     {
-        //Task<T> GetByIdAsync(string id);
         Task<T> AddAsync(T entity);
         Task<IEnumerable<T>> AddRangeAsync(IEnumerable<T> entities);
         Task UpdateAsync(T entity);

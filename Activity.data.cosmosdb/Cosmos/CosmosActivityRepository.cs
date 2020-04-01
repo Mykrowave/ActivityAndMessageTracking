@@ -1,7 +1,7 @@
 ﻿using Activity.common.cosmosdb.Interfaces;
 using Activity.common.DomainModels;
 using Activity.common.Exceptions;
-using Activity.common.Repositories;
+using Activity.common.Repositories.Communication;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Newtonsoft.Json;
@@ -23,28 +23,7 @@ namespace Activity.data.cosmosdb.Cosmos
         {
             _cosmosDbClientFactory = cosmosDbClientFactory;
         }
-        //public async Task<T> GetByIdAsync(string id)
-        //{
-        //    try
-        //    {
-        //        var cosmosDbClient = _cosmosDbClientFactory.GetClient(CollectionName);
-        //        var document = await cosmosDbClient.ReadDocumentAsync(id, new RequestOptions
-        //        {
-        //            PartitionKey = ResolvePartitionKey(id)
-        //        });
-
-        //        return JsonConvert.DeserializeObject<T>(document.ToString());
-        //    }
-        //    catch (DocumentClientException e)
-        //    {
-        //        if (e.StatusCode == HttpStatusCode.NotFound)
-        //        {
-        //            throw new EntityNotFoundException();
-        //        }
-
-        //        throw;
-        //    }
-        //}
+        
         public async Task<T> AddAsync(T entity)
         {
             try

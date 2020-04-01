@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Activity.common.DomainModels.Communication
 {
-    public class DownloadedFromCommunicationActivity
+    public class DownloadedFromCommunicationActivity : BaseActivity
     {
         public String FileType { get; set; }
         public String FileId { get; set; }
@@ -13,5 +13,6 @@ namespace Activity.common.DomainModels.Communication
         public String MessageCampaignId { get; set; }
         public int MessageSession { get; set; }
         public String MessageText { get; set; }
+        public override string ActivityType => nameof(DownloadedFromCommunicationActivity);
     }
 }
