@@ -76,10 +76,13 @@ namespace Activity.data.cosmosdb.Cosmos
             List<Document> results = new List<Document>();
             while (docQuery.HasMoreResults)
             {
-                foreach (Document d in await docQuery.ExecuteNextAsync<Document>())
+
+                FeedResponse<dynamic> feedResponse = await docQuery.ExecuteNextAsync();
+                foreach(Document d in feedResponse)
                 {
                     results.Add(d);
                 }
+                
             }
 
             return results;
