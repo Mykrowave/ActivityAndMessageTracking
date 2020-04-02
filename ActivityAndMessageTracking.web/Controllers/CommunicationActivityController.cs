@@ -52,8 +52,8 @@ namespace ActivityAndMessageTracking.web.Controllers
             //hardcode Filter for debug
             SentCampaignEmailActivityFilter filter = new SentCampaignEmailActivityFilter
             {
-                Start = DateTime.Now.ToUniversalTime().AddDays(-14),
-                End = DateTime.Now.ToUniversalTime()
+                Start = DateTime.Now.AddDays(-14),
+                End = DateTime.Now
             };
 
             var results = await _sentEmailRepository.Query("tweet", filter);
