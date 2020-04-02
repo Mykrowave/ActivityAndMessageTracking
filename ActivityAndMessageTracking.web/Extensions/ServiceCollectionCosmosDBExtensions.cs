@@ -1,5 +1,6 @@
 ﻿using Activity.common.Communication.Repositories;
 using Activity.common.cosmosdb.Interfaces;
+using Activity.common.Repositories.Communication;
 using Activity.data.cosmosdb.Cosmos;
 using Activity.data.cosmosdb.Repositories.Communication;
 using Microsoft.Azure.Documents.Client;
@@ -35,7 +36,9 @@ namespace ActivityAndMessageTracking.web.Extensions
 
             //CosmosDb Repositories
             services.AddScoped<ISentEmailActivityRepository, CosmosSentEmailActivityRepository>();
-            
+            services.AddScoped<IDownloadedFromCommunicationActivityRepository, CosmosDownloadedFromCommunicationActivityRepository>();
+
+
 
             return services;
         }

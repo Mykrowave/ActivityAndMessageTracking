@@ -13,9 +13,12 @@ namespace Activity.data.cosmosdb.Helpers
 
         public static CosmosSQLQuery CreateBaseSqlQuery(String tenant, String collectionName, BaseSearchFilter filter)
         {
+
+            
+
             CosmosSQLQuery query = new CosmosSQLQuery();
-            query.Parameters.Add("@startDate", filter.Start.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'"));
-            query.Parameters.Add("@endDate", filter.End.ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'"));
+            query.Parameters.Add("@startDate", filter.Start.ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'"));
+            query.Parameters.Add("@endDate", filter.End.ToUniversalTime().ToString("yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fff'Z'"));
             query.Parameters.Add("@activityType", filter.ActivityTypeName);
             query.Parameters.Add("@tenant", tenant);
 

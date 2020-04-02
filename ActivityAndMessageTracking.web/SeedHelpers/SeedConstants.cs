@@ -39,5 +39,25 @@ namespace ActivityAndMessageTracking.web.SeedHelpers
             "organization"
         };
 
+        public static String[] FileType =
+        {
+            "PDF",
+            "TXT",
+            "XLS",
+            "PPT",
+            "DOC",
+            "PNG",
+            "JPG",
+            "ZIP"
+        };
+
+        public static String[] MessageSource =
+        {
+            "EMAIL",
+            "PUSHNOTIFICATION",
+            "TEXTMESSAGE",
+            "SLACKMESSAGE"
+        };
+
     }
 }

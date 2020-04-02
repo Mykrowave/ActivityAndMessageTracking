@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Activity.common.Repositories.Communication
 {
-    public interface IDownloadedFromCommunicationActivityRepository
+    public interface IDownloadedFromCommunicationActivityRepository : IActivityRepository<DownloadedFromCommunicationActivity>
     {
 
         Task<List<DownloadedFromCommunicationActivity>> Query(String tenant, DownloadedFromCommunicationActivityFilter filter);
